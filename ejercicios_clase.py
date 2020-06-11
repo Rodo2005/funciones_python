@@ -53,7 +53,30 @@ def ej1():
     elif longitud == 0:
         print('No se puede obtener el promedio de una lista vacia\n')
 
-
+    # Inove: Las operaciones realizadas son correcta, pero solo nos entregará
+    # el promedio si la lista tiene solo dos elementos.
+    # Para calcular el promedio de una lista de "longitud" variable tendriamos
+    # que sumar todos los elementos y dividirlo por la cantidad en al lista.
+    # Es exactamente el mismo esquema planteado con una pequela modificacion
+    longitud = len(numeros)
+    if longitud > 0:
+        suma = sum(numeros)
+        promedio = suma / longitud
+        print(promedio)
+    elif longitud == 0:
+        print('No se puede obtener el promedio de una lista vacia\n')
+    
+    # Si quisieramos utilizar bucles en vez de utilizar la funcion "sum"
+    # para calcular la sumatoria total podría realizar un bucle "for":
+    longitud = len(numeros)
+    if longitud > 0:
+        suma = 0
+        for numero in numeros:
+            suma += numero      # Esto iterando la lista de todos los numeros y acumulando la suma
+        promedio = suma / longitud
+        print(promedio)
+    elif longitud == 0:
+        print('No se puede obtener el promedio de una lista vacia\n')
 
 
 def ej2():
@@ -91,7 +114,10 @@ azar = []
 def lista_aleatorea(inicio, fin, cantidad):
     i = 0
     while i < cantidad:
-            azaroso= random.randrange(inicio, fin, cantidad)
+            # Inove: El tercer parametro de randrange no genera "saltos" "steps" no deseados
+            # en nuestra "generacion" de numeros aleatorios
+            #azaroso= random.randrange(inicio, fin, cantidad)
+            azaroso= random.randrange(inicio, fin)
             azar.append(azaroso)
             i += 1
     else:
@@ -230,6 +256,32 @@ def contar():
     else:
         if i == cantidad:
             print(azar)
+            
+    # Inove: Excelente la funcion contar! Es mucho más de lo que se deseaba :)
+    # Solo era necesario contar cuantas veces se repite un único elemento
+    # de la lista, dicho elemento se pasa como parámetro.
+    # Esto quiere decir que nuestra funcion contar solo deberá preocuparse
+    # por contar un elemento
+    # Si por ejemplo tengo mi lista:
+    #  --> lista_al, supongamos que la lista se genero con los siguientes valores
+    # (5 numeros aleatorios del 1 al 9):
+    # [1,3,2,1,8]
+    # Y supongamos que queremos saber cuantas veces se rapite el numero "1" la funcion
+    # contar es tan simple como:
+
+    def inove_contar(lista, elemento):
+        cantidad_repeticiones = lista.count(elemento)
+        return cantidad_repeticiones
+
+    lista_al = [1,3,2,1,8]  # Estoy generando a mano la lista para realizar pruebas controladas
+    numero_a_contar = 1
+    repeticiones = inove_contar(lista_al, numero_a_contar)
+    print('El numero', numero_a_contar, 'se repite', repeticiones)
+
+    # Como podrás apreciar en este caso no es neceserario un bucle
+    # ya que no es necesario buscar más de un elemento distinto en la lista
+    
+    # Exactamente con el mismo criterio se resuelve el ejercicio siguiente ej5
 
 
 if __name__ == '__main__':
@@ -264,6 +316,30 @@ def ej5():
     # lista_numeros = lista_aleatoria(...,...,cantidad_numeros)
     # Luego quiero averiguar cuantas veces se repite el numero 3
     # cantidad_tres = contar(lista_numeros, 3)
+    
+    
+    # Inove: Mismo ejemplo que en el anterior ejercicio ej4, supongamos que tengo mi 
+    # lista aleatorio de 5 elementos con números del 1 al 9:
+    # --> lista_al, supongamos que la lista se genero con los siguientes valores
+    # [1,3,2,1,8]
+    # Mi funcion "buscar" debe revisar en que indices se encuentra el elemento deseado
+    # a buscar. Esta tarea la puedo realizar con un bucle, recorriendo toda la lista
+    # y almacenando los indices en donde encontre el elemento objeto.
+    
+    def inove_buscar(lista, elemento):
+        lista_indices = []
+        # bucle... buscar donde se encuentra el "elemento"
+        # en la "lista" y colocar dichos índices en 
+        # "lista_indices"
+        
+        # Terminado el bucle retorno la lista de indices
+        return lista_indices
+
+    lista_al = [1,3,2,1,8]  # Estoy generando a mano la lista para realizar pruebas controladas
+    numero_a_buscar = 1
+    indices = inove_buscar(lista_al, numero_a_buscar)
+    # Lo esperable que es "indices" valga [0,3] para el caso de 
+    # lista = [1,3,2,1,8]
 
 
 if __name__ == '__main__':
