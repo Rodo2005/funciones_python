@@ -32,7 +32,167 @@ def ej1():
 
     Importe el módulo a este programa/documento para su uso
     en el resto de los ejercicios
-    '''
+    ''''''
+
+
+InoveTools
+---------------------------
+Autor: Rodolfo
+Version: 1.0
+Descripcion:
+Módulo con algunas de las funciones que ejemplifican
+las herramientas desarrolladas en este curso.
+'''
+
+__author__ = "Rodolfo"
+__email__ = "alumnos@inove.com.ar"
+__version__ = "1.0"
+
+import math  
+import random
+
+def promedio():
+    longitud = len(numeros)
+    if longitud > 0:
+        minimo = min(numeros)
+        maximo = max(numeros)
+        suma = minimo + maximo
+        promedio = suma / 2
+        print(promedio)
+    elif longitud == 0:
+        print('No se puede obtener el promedio de una lista vacia\n')
+
+
+azar = []
+print('Bien venido')
+inicio = 0
+fin = 0
+cantidad = 0
+azar = []
+muestras = 5
+
+def lista_aleatorea(inicio, fin, paso):
+    i = 0
+    while i < muestras:
+            azaroso= random.randrange(inicio, fin, paso)
+            numeros.append(azaroso)
+            i += 1
+    else:
+        return numeros
+
+            
+def obtener():
+    inicio = int(input('Ingrese el parametro inicio\n'))
+    fin = int(input('Ingrese el parametro fin\n'))
+    rango = fin - inicio
+    cantidad = int(input('Ingrese el parametro paso\n'))
+    if cantidad <= rango and cantidad > 0:
+        azar = lista_aleatorea(inicio, fin, cantidad)
+        #numero_1 = random.choice(azar)
+        #numero_2 = random.choice(azar)
+        #print('Numero 1', numero_1)
+        #print('Numero 2', numero_2)
+        #raiz_cuadrada_1 = math.sqrt(numero_1)
+        #raiz_cuadrada_2 = math.sqrt(numero_2)
+        #print('Raiz cuadrada de', numero_1, 'es', raiz_cuadrada_1)
+        #print('Raiz cuadrada de', numero_2, 'es', raiz_cuadrada_2)
+        print('Lista random', azar)
+    else:
+        print('Datos fuera de rango\n')
+
+
+numeros = []
+
+def ordenar(numeros):
+    numeros.sort(reverse=True)
+    numeros_ordenados = numeros
+    return numeros_ordenados
+
+
+def crear_lista():
+    numeros = []
+    cuantos = 0
+    cuantos = int(input('Cuantos numero desea ordenar\n'))
+    i = 0
+    while i < cuantos:
+        numero = int(input('Ingresar numero\n'))
+        numeros.append(numero)
+        i += 1
+    ordenar(numeros)
+    print(numeros)
+
+
+def contar():
+    i = 0
+    numero = 0
+    total = 0
+    inicio = 1
+    fin = 9
+    paso = 1
+    cantidad = 5
+    azar = lista_aleatorea(inicio, fin+1, paso)
+    while i < cantidad:
+        numero = azar[i]
+        repe = azar.count(numero)
+        print('El numero', numero, 'se repite', repe, 'veces')
+        total = total + repe
+        if total != cantidad:
+            i += 1
+        else:
+            if total == cantidad:
+                print(azar)
+                break
+    else:
+        if i == cantidad:
+            print(azar)
+
+
+    inicio = 1
+    fin = 9
+    paso = 1
+
+def buscar():
+    cantida_numeros = 5
+    i = 1
+    j = 0
+    lista_repe = []
+    indice_num = []
+    azar = lista_aleatorea(inicio, fin, paso)
+    for i in range(1, 10):
+        j = 0
+        indice_num = []
+        while j < cantida_numeros:
+            numero = azar[j]
+            if i == numero:
+                indice_num.insert(j, azar.index(numero))
+                j += 1
+            elif i != numero:
+                j += 1
+        if j == cantida_numeros:
+            repeticiones = len(indice_num)
+            while repeticiones!= 0:
+                lista_repe.append(i)
+                lista_repe.append(repeticiones)
+                break
+                
+    if i == 9:            
+        k = 0
+        while k < 7:
+            print('El numero', lista_repe[k], 'aparece', lista_repe[k+1], 'veces')
+            #print('En posicion', indice_num[i])
+            k += 2
+
+
+if __name__ == '__main__':
+    promedio()
+    #lista_aleatorea()
+    #obtener()
+    #ordenar()
+    #crear_lista()
+    #contar()
+    #buscar()
+
+
 
 
 def ej2():
@@ -62,6 +222,27 @@ def ej2():
     de números.
     Imprima en pantalla dicha lista de 3 valores.
     '''
+
+def azaroso():
+    inicio = 1
+    fin = 6
+    paso = 1
+    numeros = []
+    tres = []
+    #muestras = int(input('Cantidad de muestras: \n'))
+    numeros = lista_aleatorea(inicio, fin, paso)
+    numeros_ordenados = ordenar(numeros)
+    print('Numeros ordenados: \n', numeros_ordenados)
+    random.shuffle(numeros_ordenados)
+    tres = random.sample(numeros_ordenados, 3)
+    print('Tres numeros:\n', tres)
+
+
+if __name__ == '__main__':
+    azaroso()
+
+
+
 
 
 def ej3():

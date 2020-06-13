@@ -1,16 +1,16 @@
 
 import math
 import random
-azar = []
-print('Bien venido')
 inicio = 0
 fin = 0
-cantidad = 0
+paso = 0
 azar = []
-def lista_aleatorea(inicio, fin, cantidad):
+print('Bien venido')
+azar = []
+def lista_aleatorea(inicio, fin, paso):
     i = 0
-    while i < cantidad:
-            azaroso= random.randrange(inicio, fin, cantidad)
+    while i < 5:
+            azaroso= random.randrange(inicio, fin, paso)
             azar.append(azaroso)
             i += 1
     else:
@@ -18,14 +18,14 @@ def lista_aleatorea(inicio, fin, cantidad):
 
         
 
-    
+
 def obtener():
     inicio = int(input('Ingrese el parametro inicio\n'))
     fin = int(input('Ingrese el parametro fin\n'))
     rango = fin - inicio
-    cantidad = int(input('Ingrese el parametro cantidad\n'))
-    if cantidad <= rango and cantidad > 0:
-        azar = lista_aleatorea(inicio, fin, cantidad)
+    cantidad = int(input('Ingrese el parametro paso\n'))
+    if rango > 0:
+        azar = lista_aleatorea(inicio, fin, paso)
         numero_1 = random.choice(azar)
         numero_2 = random.choice(azar)
         print('Numero 1', numero_1)
@@ -40,25 +40,25 @@ def obtener():
 
 def contar():
     i = 0
-    numero = 0
+    numero_i = 0
     total = 0
     inicio = 1
     fin = 9
-    cantidad = 5
-    azar = lista_aleatorea(inicio, fin+1, cantidad)
-    while i < cantidad:
-        numero = azar[i]
-        repe = azar.count(numero)
-        print('El numero', numero, 'se repite', repe, 'veces')
+    paso = 1
+    azar = lista_aleatorea(inicio, fin+1, paso)
+    while i < 5:
+        numero_i = azar[i]
+        repe = azar.count(numero_i)
+        print('El numero', numero_i, 'se repite', repe, 'veces')
         total = total + repe
-        if total != cantidad:
+        if total != 5:
             i += 1
         else:
-            if total == cantidad:
+            if total == 5:
                 print(azar)
                 break
     else:
-        if i == cantidad:
+        if i == 5:
             print(azar)
 
 
@@ -71,20 +71,19 @@ def buscar():   # Aún no funciona
     total = 0
     inicio = 1
     fin = 9
-    cantidad = 5
-    azar = lista_aleatorea(inicio, fin+1, cantidad)
+    azar = lista_aleatorea(inicio, fin+1, paso)
     print('Elementos generados por azar')
     print(azar)
     elegir = int(input('Número, entonces ubicación 1, Ubicación entonces número 2\n'))
     if elegir == 1:
-        while i < cantidad:
+        while i < 5:
             elemento = int(input('Ingrese el número\n'))
             indice_elemento = azar.index(elemento)
             indices = indices.append(indice_elemento)
             i += 1
             print(indices)
     if elegir == 2:
-        while i < cantidad:
+        while i < 5:
                 indice_elemento = int(input('Ingrese indice\n'))
                 elemento = azar[indice_elemento]
                 i += 1
@@ -96,7 +95,7 @@ def buscar():   # Aún no funciona
 
 
 if __name__ == '__main__':
-    lista_aleatorea(inicio, fin, cantidad)
+    #lista_aleatorea(inicio, fin, cantidad)
     #obtener()
     #contar()
     buscar()

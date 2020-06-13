@@ -87,11 +87,11 @@ inicio = 0
 fin = 0
 cantidad = 0
 azar = []
-
-def lista_aleatorea(inicio, fin, cantidad):
+muestras = 1
+def lista_aleatorea(inicio, fin, paso):
     i = 0
-    while i < cantidad:
-            azaroso= random.randrange(inicio, fin, cantidad)
+    while i < muestras:
+            azaroso= random.randrange(inicio, fin, paso)
             azar.append(azaroso)
             i += 1
     else:
@@ -102,7 +102,7 @@ def obtener():
     inicio = int(input('Ingrese el parametro inicio\n'))
     fin = int(input('Ingrese el parametro fin\n'))
     rango = fin - inicio
-    cantidad = int(input('Ingrese el parametro cantidad\n'))
+    cantidad = int(input('Ingrese el parametro paso\n'))
     if cantidad <= rango and cantidad > 0:
         azar = lista_aleatorea(inicio, fin, cantidad)
         numero_1 = random.choice(azar)
@@ -214,8 +214,9 @@ def contar():
     total = 0
     inicio = 1
     fin = 9
+    paso = 1
     cantidad = 5
-    azar = lista_aleatorea(inicio, fin+1, cantidad)
+    azar = lista_aleatorea(inicio, fin+1, paso)
     while i < cantidad:
         numero = azar[i]
         repe = azar.count(numero)
@@ -234,7 +235,7 @@ def contar():
 
 if __name__ == '__main__':
     lista_aleatorea(inicio, fin, cantidad)
-    contar()
+    #contar()
 
     # Por ejemplo creo una lista de 5 elemtnos
     # lista_numeros = lista_aleatoria(...,...,cantidad_numeros)
@@ -265,11 +266,54 @@ def ej5():
     # Luego quiero averiguar cuantas veces se repite el numero 3
     # cantidad_tres = contar(lista_numeros, 3)
 
+    inicio = 1
+    fin = 9
+    paso = 1
+
+def buscar():
+    cantida_numeros = 5
+    i = 1
+    j = 0
+    lista_repe = []
+    indice_num = []
+    azar = lista_aleatorea(inicio, fin, paso)
+    for i in range(1, 10):
+        j = 0
+        indice_num = []
+        while j < cantida_numeros:
+            numero = azar[j]
+            if i == numero:
+                indice_num.insert(j, azar.index(numero))
+                j += 1
+            elif i != numero:
+                j += 1
+        if j == cantida_numeros:
+            repeticiones = len(indice_num)
+            while repeticiones!= 0:
+                lista_repe.append(i)
+                lista_repe.append(repeticiones)
+                break
+                
+    if i == 9:            
+        k = 0
+        while k < 7:
+            print('El numero', lista_repe[k], 'aparece', lista_repe[k+1], 'veces')
+            #print('En posicion', indice_num[i])
+            k += 2
+            #print(azar)
+            #print(indice_num)
+            #print(lista_repe)
+            
+
+
+if __name__ == '__main__':
+    buscar()
+
 
 if __name__ == '__main__':
     print("Bienvenidos a otra clase de Inove con Python")
     #ej1()
     #ej2()
     #ej3()
-    ej4()
+    #ej4()
     #ej5()
