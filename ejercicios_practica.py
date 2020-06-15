@@ -50,7 +50,9 @@ __version__ = "1.0"
 
 import math  
 import random
+import statistics
 
+'''
 def promedio():
     longitud = len(numeros)
     if longitud > 0:
@@ -61,23 +63,39 @@ def promedio():
         print(promedio)
     elif longitud == 0:
         print('No se puede obtener el promedio de una lista vacia\n')
+'''
+
+def promedio(numeros):
+    
+    suma = 0
+    longitud = len(numeros)
+    if longitud > 0:
+        for longitud in numeros:
+            suma = suma + longitud
+        promedio = suma / longitud
+        print('Suma: ', suma)
+        print('Promedio:', promedio)
+        return promedio
+    elif longitud == 0:
+        print('Lista vacia')
 
 
-azar = []
-print('Bien venido')
 inicio = 0
 fin = 0
 cantidad = 0
 azar = []
-muestras = 5
+numeros = []
+paso = 1
 
-def lista_aleatorea(inicio, fin, paso):
+
+def lista_aleatorea(inicio, fin, paso, muestras):
     i = 0
     while i < muestras:
-            azaroso= random.randrange(inicio, fin, paso)
+            azaroso = random.randrange(inicio, fin, paso)
             numeros.append(azaroso)
             i += 1
     else:
+        print('Lista:', numeros)
         return numeros
 
             
@@ -85,9 +103,10 @@ def obtener():
     inicio = int(input('Ingrese el parametro inicio\n'))
     fin = int(input('Ingrese el parametro fin\n'))
     rango = fin - inicio
-    cantidad = int(input('Ingrese el parametro paso\n'))
-    if cantidad <= rango and cantidad > 0:
-        azar = lista_aleatorea(inicio, fin, cantidad)
+    paso = int(input('Ingrese el parametro paso\n'))
+    muestras = int(input('Ingreses la cantidad de muestras\n'))
+    if muestras > 0:
+        azar = lista_aleatorea(inicio, fin, paso, muestras)
         #numero_1 = random.choice(azar)
         #numero_2 = random.choice(azar)
         #print('Numero 1', numero_1)
@@ -101,7 +120,7 @@ def obtener():
         print('Datos fuera de rango\n')
 
 
-numeros = []
+# numeros = []
 
 def ordenar(numeros):
     numeros.sort(reverse=True)
@@ -183,8 +202,8 @@ def buscar():
             k += 2
 
 
-if __name__ == '__main__':
-    promedio()
+#if __name__ == '__main__':
+    #promedio(numeros)
     #lista_aleatorea()
     #obtener()
     #ordenar()
@@ -227,10 +246,11 @@ def azaroso():
     inicio = 1
     fin = 6
     paso = 1
+    muestras = 0
     numeros = []
     tres = []
     #muestras = int(input('Cantidad de muestras: \n'))
-    numeros = lista_aleatorea(inicio, fin, paso)
+    numeros = lista_aleatorea(inicio, fin, paso, muestras)
     numeros_ordenados = ordenar(numeros)
     print('Numeros ordenados: \n', numeros_ordenados)
     random.shuffle(numeros_ordenados)
@@ -276,6 +296,24 @@ def ej3():
     Cualquier duda nos escriben en el Campus
     '''
 
+def factorial():
+
+
+    numero = int(input('Ingrese un numero entero para calcular su factorial: \n'))
+    if numero > 0:
+        i = numero -1
+        factorial = numero 
+        while i > 1:
+            factorial = factorial * i
+            i -= 1
+        print('El factorial de', numero, 'es', factorial)
+    elif numero <= 0:
+        print('No existe el factorial de un numero negativo o cero\n')
+
+
+if __name__ == '__main__':
+    factorial()
+
 
 def ej4():
     print("Un pequeño paso en la estadística, un gran paso en Python")
@@ -313,6 +351,42 @@ def ej4():
 
     '''
     # Mi implementación de desvió estandar a continuación:
+import statistics
+
+
+def desvio_estandar():
+    paso = 1
+    inicio = int(input('En que valor comienza\n'))
+    fin = int(input('En que valor termina\n'))
+    muestras = int(input('Cuantas muestras desea se realicen\n'))
+    numeros = lista_aleatorea(inicio, fin, paso, muestras)
+    prom = promedio(numeros)
+    sumar = 0
+    potencia = 0
+    for i in numeros:
+        potencia = (i - prom) * (i - prom)
+        sumar = sumar + potencia
+    s = math.sqrt(sumar / (len(numeros)) - 1)
+    print('La desviacion estandar es:', s)
+    print('')
+
+    #  Estas proximas cuatro lineas nos dan datos aproximados
+    #  a los calculos hechos sin la libreria 'statistics' para
+    #  el calculo de valores estadisticos
+
+    media_arit = statistics.mean(numeros)
+    print(media_arit)
+    desv_estandar = statistics.stdev(numeros)
+    print(desv_estandar)
+
+
+    
+
+
+if __name__ == '__main__':
+    #lista_aleatorea(inicio, fin, paso)
+    promedio(numeros)
+    desvio_estandar()
 
     '''
     Ahora que han terminado, importe el módulo "statistics" y realice
@@ -321,6 +395,9 @@ def ej4():
     1 - Utilice el método mean() para contrastar nuestro método "promedio"
     2 - Utilice el método stdev() para contrastar nuestro función desvio_estandar
     '''
+
+
+
 
 
 def ej5():
