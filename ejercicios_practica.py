@@ -448,7 +448,44 @@ def ej5():
     guardados" tenga "generala", es decir, 5 números iguales.
 
     '''
-
+def generala():
+    i = 1
+    k = 0
+    mayor_cantidad = []
+    dados_guardados = []
+    mas_cantidad = 0
+    paso = 1
+    inicio = 1
+    fin = 6
+    muestras = 5
+    verdad = False
+    #inicio = int(input('En que valor comienza\n'))
+    #fin = int(input('En que valor termina\n'))
+    #muestras = int(input('Cuantas muestras desea se realicen\n'))
+    while muestras > 0: 
+        numeros = lista_aleatorea(inicio, fin, paso, muestras)
+        k += 1
+        if muestras < 5:
+            verdad = True
+        if verdad == False:
+            mas_cantidad = max(numeros, key=numeros.count)
+            cuantos = numeros.count(mas_cantidad)
+            while i < cuantos + 1:
+                ubicacion = numeros.index(mas_cantidad)
+                dados_guardados.append(numeros.pop(ubicacion))
+                i += 1
+            muestras = len(numeros)
+        elif verdad == True:
+            if mas_cantidad in numeros:
+                cuantos = numeros.count(mas_cantidad)
+                i = 1
+                while i < cuantos + 1:
+                    ubicacion = numeros.index(mas_cantidad)
+                    dados_guardados.append(numeros.pop(ubicacion))
+                    i += 1
+                muestras = len(numeros)
+    else:
+        print('GENERALA', k, 'veces se tuvieron que tirar los dados') 
 
 if __name__ == '__main__':
     print("Ejercicios de práctica")
