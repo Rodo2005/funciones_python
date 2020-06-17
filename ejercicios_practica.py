@@ -70,9 +70,13 @@ def promedio(numeros):
     suma = 0
     longitud = len(numeros)
     if longitud > 0:
-        for longitud in numeros:
+        for longitud in numeros:    
             suma = suma + longitud
-        promedio = suma / longitud
+        # Inove: Ojo! sino me equivoco se perdió el valor de longitud al usarlo en el bucle
+        # Recomendamos cambiar el nombre de la variable utilzada en el bucle para evitar que
+        # se pierda le valor de "longitud = len(numeros)"
+        # ej: for numero in numeros: 
+        promedio = suma / longitud 
         print('Suma: ', suma)
         print('Promedio:', promedio)
         return promedio
@@ -471,6 +475,7 @@ def generala():
             mas_cantidad = max(numeros, key=numeros.count)
             cuantos = numeros.count(mas_cantidad)
             while i < cuantos + 1:
+                # Inove: Impecable el manejo del append y pop combinandos
                 ubicacion = numeros.index(mas_cantidad)
                 dados_guardados.append(numeros.pop(ubicacion))
                 i += 1
